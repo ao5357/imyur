@@ -1,169 +1,24 @@
     1  sudo yum upgrade
     2  sudo yum install php-fpm php-bcmath php-gd php-mbstring php-mcrypt php-mysql php-pdo php-pecl-apc php-tidy php-xml php-xmlrpc php-imap php-intl
     3  sudo yum install nginx
-    4  cd /var/www
-    5  ls
-    6  cd /etc/init.d
-    7  ls
-    8  cd ./
-    9  cd /usr/local/etc/
-   10  ls
-   11  cd /etc
-   12  ls
-   13  sudo vi php-fpm.conf
-   14  cd /etc/init.d
-   15  ls
-   16  service php-fpm start
+   11  cd /etc/php-fpm.conf
    17  sudo service php-fpm start
-   18  cd /usr/local/etc/
-   19  ls
-   20  cd /usr/local/etc
-   21  ls
-   22  cd /etc
-   23  ls
-   24  sudo vi php-fpm.conf
-   25  cd /usr
-   26  ls
-   27  cd etc
-   28  ls
-   29  cd ./
-   30  cd ../
-   31  cd lib
-   32  ls
-   33  cd ../
-   34  cd /etc
-   35  ls
-   36  cd nginx
-   37  ls
+   34  cd /etc/nginx
    38  sudo vi nginx.conf
    39  sudo /etc/init.d/nginx start
-   40  sudo vi nginx.conf
-   41  sudo /etc/init.d/nginx start
-   42  cd /var/www/html
-   43  sudo vi test.php
-   44  wget http://localhost/test.php
-   45  wget http://localhost/
-   46  sudo vi index.html
-   47  wget http://localhost/
-   48  wget http://www.hawidu.com
-   49  ls
-   50  cd /etc
-   51  ls
-   52  cd nginx/
-   53  ls
-   54  sudo vi nginx.conf
-   55  sudo vi fastcgi_params
-   56  sudo vi nginx.conf
-   57  sudo /etc/init.d/nginx restart
-   58  cd ~
-   59  wget http://localhost/test.php
-   60  ls
-   61  sudo vi test.php 
    62  sudo yum install git-core
    63  cd /var
    64  sudo mkdir git
    65  sudo chown -R ec2-user git
    66  cd git
-   67  mkdir imyur
-   68  cd imyur
-   69  git init --bare
-   70  cd ../
-   71  ls
-   72  rm -rv imyur
-   73  ls
    74  mkdir imyur.git
    75  cd imyur.git/
    76  git init --bare
-   77  quit
-   78  exit
    79  cd /var/www/imyur
-   80  git pull origin master
    81  cd /var
    82  chown -R ec2-user www
    83  sudo chown -R ec2-user www
-   84  cd /var/git/imyur.git/
-   85  cd /var/www/imyur/
-   86  git pull origin
-   87  exit
-   88  cd /var/www/imyur/
-   89  git pull origin
-   90  exit
    91  cd /var/www
-   92  ls
    93  sudo rm -rv html
    94  git clone /var/git/imyur.git
-   95  ls
-   96  cd imyur
-   97  ls
-   98  cd html
-   99  ls
-  100  cd /etc
-  101  ls
-  102  cd nginx
-  103  sudo vi nginx.conf
-  104  sudo /etc/init.d/nginx restart
-  105  cd /var/www/imyur/
-  106  git pull origin
-  107  exit
-  108  cd /var/www/imyur/
-  109  git pull origin
-  110  exit
-  111  cd /etc/nginx/
-  112  sudo chown ec2-user nginx.conf
-  113  sudo /etc/init.d/nginx restart
-  114  exit
-  115  cd /var/www/imyur/
-  116  git pull origin
-  117  sudo /etc/init.d/nginx restart
-  118  exit
-  119  cd /var/www/imyur/
-  120  git pull origin
-  121  sudo /etc/init.d/nginx restart
-  122  exit
-  123  cd /var/www/imyur/
-  124  git pull origin
-  125  sudo /etc/init.d/nginx restart
-  126  cd html
-  127  ls
-  128  exit
-  129  cd /var/www/imyur/
-  130  git pull origin
-  131  sudo /etc/init.d/nginx restart
   132  sudo chown ec2-user /etc/php.ini
-  133  sudo /etc/init.d/php-fpm restart
-  134  sudo /etc/init.d/nginx restart
-  135  exit
-  136  cd /var/www/imyur/
-  137  git pull origin
-  138  sudo /etc/init.d/nginx restart
-  139  sudo /etc/init.d/php-fpm restart
-  140  sudo /etc/init.d/nginx restart
-  141  exit
-  142  cd /var/www/imyur/
-  143  git pull origin
-  144  exit
-  145  cd /var/www/imyur/
-  146  git pull origin
-  147  sudo /etc/init.d/nginx restart
-  148  exit
-  149  cd /var/www/imyur/
-  150  git pull origin
-  151  sudo /etc/init.d/nginx restart
-  152  cd /var/www/imyur/
-  153  git pull origin
-  154  exit
-  155  git pull origin
-  156  cd /var/www/imyur/
-  157  git pull origin
-  158  exit
-  159  cd /var/www/imyur/
-  160  git pull origin
-  161  exit
-  162  cd /var/www/imyur/
-  163  git pull origin
-  164  sudo /etc/init.d/php-fpm restart
-  165  cd /var/www/imyur/
-  166  mkdir conf
-  167  cd conf
-  168  bash history > bash.history
-  169  history > bash.history
