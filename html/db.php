@@ -1,5 +1,5 @@
 <?php
-$con = mysql_connect("imyur.ceyo3ivnp7zs.us-east-1.rds.amazonaws.com","ruym1","T1dd3rRuYm1");
+$con = mysql_connect("imyur.ceyo3ivnp7zs.us-east-1.rds.amazonaws.com","ruymi","T1dd3rRuYm1");
 if(!$con){
   die('Could not connect: ' . mysql_error());
   }
