@@ -1,11 +1,9 @@
 <?php
-try{
-	require_once 'AWSSDKforPHP/sdk.class.php';
-	} catch(Exception $e){
+require_once 'AWSSDKforPHP/sdk.class.php';
+try{$dynamodb = new AmazonDynamoDB();} catch(Exception $e){
 		throw $e;
 		var_dump($e->getMessage());
 		}
-//$dynamodb = new AmazonDynamoDB();
 $table_name = 'addresses';
 
 /* Deal with input parameters */
