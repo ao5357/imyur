@@ -1,0 +1,211 @@
+sudo yum upgrade
+sudo yum install php-fpm php-bcmath php-gd php-mbstring php-mcrypt php-mysql php-pdo php-pecl-apc php-tidy php-xml php-xmlrpc php-imap php-intl
+sudo yum install nginx
+cd /var/www
+ls
+cd /etc/init.d
+ls
+cd ./
+cd /usr/local/etc/
+ls
+cd /etc
+ls
+sudo vi php-fpm.conf
+cd /etc/init.d
+ls
+service php-fpm start
+sudo service php-fpm start
+cd /usr/local/etc/
+ls
+cd /usr/local/etc
+ls
+cd /etc
+ls
+sudo vi php-fpm.conf
+cd /usr
+ls
+cd etc
+ls
+cd ./
+cd ../
+cd lib
+ls
+cd ../
+cd /etc
+ls
+cd nginx
+ls
+sudo vi nginx.conf
+sudo /etc/init.d/nginx start
+sudo vi nginx.conf
+sudo /etc/init.d/nginx start
+cd /var/www/html
+sudo vi test.php
+wget http://localhost/test.php
+wget http://localhost/
+sudo vi index.html
+wget http://localhost/
+wget http://www.hawidu.com
+ls
+cd /etc
+ls
+cd nginx/
+ls
+sudo vi nginx.conf
+sudo vi fastcgi_params
+sudo vi nginx.conf
+sudo /etc/init.d/nginx restart
+cd ~
+wget http://localhost/test.php
+ls
+sudo vi test.php 
+sudo yum install git-core
+cd /var
+sudo mkdir git
+sudo chown -R ec2-user git
+cd git
+mkdir imyur
+cd imyur
+git init --bare
+cd ../
+ls
+rm -rv imyur
+ls
+mkdir imyur.git
+cd imyur.git/
+git init --bare
+quit
+exit
+cd /var/www/imyur
+git pull origin master
+cd /var
+chown -R ec2-user www
+sudo chown -R ec2-user www
+cd /var/git/imyur.git/
+cd /var/www/imyur/
+git pull origin
+exit
+cd /var/www/imyur/
+git pull origin
+exit
+cd /var/www
+ls
+sudo rm -rv html
+git clone /var/git/imyur.git
+ls
+cd imyur
+ls
+cd html
+ls
+cd /etc
+ls
+cd nginx
+sudo vi nginx.conf
+sudo /etc/init.d/nginx restart
+cd /var/www/imyur/
+git pull origin
+exit
+cd /var/www/imyur/
+git pull origin
+exit
+cd /etc/nginx/
+sudo chown ec2-user nginx.conf
+sudo /etc/init.d/nginx restart
+exit
+cd /var/www/imyur/
+git pull origin
+sudo /etc/init.d/nginx restart
+exit
+cd /var/www/imyur/
+git pull origin
+sudo /etc/init.d/nginx restart
+exit
+cd /var/www/imyur/
+git pull origin
+sudo /etc/init.d/nginx restart
+cd html
+ls
+exit
+cd /var/www/imyur/
+git pull origin
+sudo /etc/init.d/nginx restart
+sudo chown ec2-user /etc/php.ini
+sudo /etc/init.d/php-fpm restart
+sudo /etc/init.d/nginx restart
+exit
+cd /var/www/imyur/
+git pull origin
+sudo /etc/init.d/nginx restart
+sudo /etc/init.d/php-fpm restart
+sudo /etc/init.d/nginx restart
+exit
+cd /var/www/imyur/
+git pull origin
+exit
+cd /var/www/imyur/
+git pull origin
+sudo /etc/init.d/nginx restart
+exit
+cd /var/www/imyur/
+git pull origin
+sudo /etc/init.d/nginx restart
+cd /var/www/imyur/
+git pull origin
+exit
+git pull origin
+cd /var/www/imyur/
+git pull origin
+exit
+cd /var/www/imyur/
+git pull origin
+exit
+cd /var/www/imyur/
+git pull origin
+sudo /etc/init.d/php-fpm restart
+cd /var/www/imyur/
+mkdir conf
+cd conf
+bash history > bash.history
+history > bash.history
+ls
+vi bash.history 
+cd ../
+git add .
+git commit -a -m "added early bash history for a snopshot rebuild record"
+exit
+cd /var/www/imyur/
+git push origin master
+exit
+cd /var/www/imyur
+git pull origin
+exit
+cd /var/www/imyur/
+git pull origin
+cd /var/www/imyur/
+git pull origin
+exit
+cd /var/www/imyur/
+git pull origin
+exit
+cd /var/www/imyur/
+git pull origin
+exit
+cd /var/www/imyur/
+git pull origin
+exit
+cd /var/www/imyur/
+ls
+cd conf
+ls
+cd ../
+git pull origin master
+cd /var/www/imyur/
+git pull origin master
+cd /var/www/imyur/
+git pull origin master
+exit
+sudo yum upgrade
+exit
+cd /var/www/imyur/
+git pull origin master
+exit
