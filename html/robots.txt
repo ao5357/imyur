@@ -1,2 +1,3 @@
 # hello computer
+User-agent: *
 Disallow:
