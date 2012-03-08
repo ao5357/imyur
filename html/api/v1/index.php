@@ -36,7 +36,7 @@ function save_url($input_url){
 	return true;
 	}
 
-/* Deal with input parameters */
+/* Deal with input parameters
 
 if($valid_url && $url_parts['scheme'] && in_array($url_parts['scheme'],$allowed_schemes)){
 	$safe_lookup = file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url));
@@ -46,8 +46,8 @@ if($valid_url && $url_parts['scheme'] && in_array($url_parts['scheme'],$allowed_
 	else{
 		$output = $safe_lookup;
 		}
-	}
+	} */
 
 echo 'Input URL: ' . $input_url . ' |callback: ' . $callback . "\r\n";
 print_r($url_parts);
-echo ($callback) ? $callback . '(' . json_encode($output) . ');' : json_encode($output);
+//echo ($callback) ? $callback . '(' . json_encode($output) . ');' : json_encode($output);
