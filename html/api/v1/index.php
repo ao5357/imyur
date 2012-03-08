@@ -32,6 +32,10 @@ function counter(){
 	return $cur + 14776335;
 	}
 
+function save_url($input_url){
+	return true;
+	}
+
 /* Deal with input parameters */
 
 if($valid_url && $url_parts['scheme'] && in_array($url_parts['scheme'],$allowed_schemes)){
