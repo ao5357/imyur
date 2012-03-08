@@ -48,4 +48,6 @@ if($valid_url && $url_parts['scheme'] && in_array($url_parts['scheme'],$allowed_
 		}
 	}
 
+echo 'Input URL: ' . $input_url . ' |callback: ' . $callback . "\r\n";
+print_r($url_parts);
 echo ($callback) ? $callback . '(' . json_encode($output) . ');' : json_encode($output);
