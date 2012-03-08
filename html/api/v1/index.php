@@ -6,7 +6,7 @@ $table_name = 'addresses';
 $allowed_schemes = array('http','https','shttp','ssl','spdy');
 $input_url = substr(trim($_GET['q']),8);
 $callback = trim($_GET['callback']);
-$url_parts = parse_url($input_url)
+$url_parts = parse_url($input_url);
 $valid_url = filter_var($input_url, FILTER_VALIDATE_URL);
 $output = '';
 
