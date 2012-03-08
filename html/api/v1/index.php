@@ -43,7 +43,7 @@ if($url_parts['scheme'] && in_array($url_parts['scheme'],$allowed_schemes)){
 		$output = save_url($input_url);
 		}
 	else{
-		$output = $safe_lookup;
+		$output = $http_response_header[0];
 		}
 	}
 else{
