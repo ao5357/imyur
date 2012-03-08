@@ -3,6 +3,12 @@ ini_set('display_errors', 1);
 require_once 'AWSSDKforPHP/sdk.class.php';
 $dynamodb = new AmazonDynamoDB();
 $table_name = 'addresses';
+$allowed_schemes = array('http','https','shttp','ssl','spdy');
+$input_url = substr(trim($_GET['q']),8);
+$callback = trim($_GET['callback']);
+$url_parts = parse_url($input_url)
+$valid_url = filter_var($input_url, FILTER_VALIDATE_URL);
+$output = '';
 
 /* Functions */
 function base62encode($data){
@@ -19,7 +25,23 @@ function base62encode($data){
 	return $outstring;
 	}
 
+function counter(){
+	$prev = (int)file_get_contents('/home/ec2-user/imco.txt');
+	$cur = $prev + 1;
+	file_put_contents('/home/ec2-user/imco.txt', $cur);
+	return $cur + 14776335;
+	}
+
 /* Deal with input parameters */
-$input_url = substr(trim($_GET['q']),8);
-$hash = substr(base62encode(md5($input_url)),0,5);
-echo $input_url . ' becomes ' . $hash;
+
+if($valid_url && $url_parts['scheme'] && in_array($url_parts['scheme'],$allowed_schemes)){
+	$safe_lookup = file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url));
+	if($http_response_headers[0] == 'HTTP/1.1 204 No Content'){
+		$output = save_url($input_url);
+		}
+	else{
+		$output = $safe_lookup;
+		}
+	}
+
+echo ($callback) ? $callback . '(' . json_encode($output) . ');' : json_encode($output);
