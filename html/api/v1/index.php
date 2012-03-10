@@ -1,8 +1,8 @@
 <?php
 ini_set('display_errors', 1);
 require_once 'AWSSDKforPHP/sdk.class.php';
-$dynamodb = new AmazonDynamoDB();
-$table_name = 'addresses';
+$sdb = new AmazonSDB();
+$domain = 'addresses';
 $allowed_schemes = array('http','https','shttp','ssl','spdy');
 $input_url = substr(trim($_GET['q']),8);
 $callback = trim($_GET['callback']);
@@ -32,7 +32,7 @@ function counter(){
 	}
 
 function save_url($input_url){
-	return counter();
+	return base62encode(counter());
 	}
 
 /* Core conditional logic */
