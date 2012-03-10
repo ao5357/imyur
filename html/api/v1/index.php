@@ -25,9 +25,9 @@ function base62encode($data){
 	}
 
 function counter(){
-	$prev = (int)file_get_contents('/home/ec2-user/imco.txt');
+	$prev = (int)file_get_contents('/home/www/imco.txt');
 	$cur = $prev + 1;
-	file_put_contents('/home/ec2-user/imco.txt', $cur);
+	file_put_contents('/home/www/imco.txt', $cur);
 	return $cur + 14776335;
 	}
 
