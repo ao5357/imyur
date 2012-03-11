@@ -1,3 +1,3 @@
-$(document).ready(function(){
+jQuery(document).ready(function($){
 	console.log("This jquery-dependent script ran.");
 });
