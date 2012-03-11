@@ -43,7 +43,7 @@ if($url_parts['scheme'] && in_array($url_parts['scheme'],$allowed_schemes)){
 	if($http_response_header[0] == 'HTTP/1.0 204 No Content'){
 		$save_attempt = save_url($input_url);
 		if($save_attempt[0]){
-			$output['hash'] = $save_attempt[1]
+			$output['hash'] = $save_attempt[1];
 			}
 		else{
 			$output['error'] = 'failed to save to db';
