@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 $path = substr(trim($_GET['q']),1); echo $path;
 $pos = strpos($path,'.'); echo $pos;
-if($pos == 5 || $pos == 6){
+/* if($pos == 5 || $pos == 6){
 	echo "Condition for pos was true";
 	$hash = substr($path,0,$pos);
 	echo $hash;
@@ -27,4 +27,4 @@ if($pos == 5 || $pos == 6){
 	}
 else{
 	// header("HTTP/1.0 404 Not Found");
-	}
+	} */
