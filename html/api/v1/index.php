@@ -2,12 +2,14 @@
 ini_set('display_errors', 1);
 $allowed_schemes = array('http','https','shttp','ssl','spdy');
 $input_url = trim($_GET['q']);
+$notjson = false;
 if(substr($input_url,0,8) == '/api/v1/'){
+	$notjson = true;
 	$input_url = substr($input_url,8);
 	}
 $callback = (isset($_GET['callback'])) ? trim($_GET['callback']) : false;
-$ext = (isset($_GET['ext'])) ? '.' . substr(trim($_GET['ext']),0,25) : false;
-$subdomain = (isset($_GET['subdomain']) && in_array($_GET['subdomain'],array('i','self','www'))) ? $_GET['subdomain'] . '.' : false;
+$ext = (isset($_GET['ext'])) ? '.' . substr(trim($_GET['ext']),0,25) : '';
+$subdomain = (isset($_GET['subdomain']) && in_array($_GET['subdomain'],array('i','self','www'))) ? $_GET['subdomain'] . '.' : '';
 $url_parts = parse_url($input_url);
 $output = array('url' => $input_url);
 $success = false;
@@ -63,11 +65,14 @@ else{
 	}
 
 /* Output */
-if(!$success){header("HTTP/1.1 400 Bad Request");}
-if($success && $ext && $subdomain){
+if(!$success){
+	header("HTTP/1.1 400 Bad Request");
+	}
+
+if($success && $notjson){
 	echo 'Your shortened link is <a href="http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '">http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '</a>. Please enable Javascript in your browser.';
 	}
-else if(!$success && $ext && $subdomain){
+else if(!$success && $notjson){
 	echo 'There was an error creating your link. Please enable Javascript in your browser and try again.';
 	}
 else{
