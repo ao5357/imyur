@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 $path = substr(trim($_GET['q']),1);
 $pos = strpos($path,'.');
 if($pos == 5 || $pos == 6){
