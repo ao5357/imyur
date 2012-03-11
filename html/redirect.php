@@ -5,10 +5,12 @@ $pos = strpos($path,'.');
 if($pos == 5 || $pos == 6){
 	echo "Condition for pos was true";
 	$hash = substr($path,0,$pos);
-	echo $hash;}
-	/*$from_apc = apc_fetch($hash);
-	echo $from_apc;
-	if(!$from_apc){
+	$from_apc = apc_fetch($hash,$apc_success);
+
+	if($apc_success){
+		header('Location: ' . $from_apc);
+		}
+	else{
 		require_once 'AWSSDKforPHP/sdk.class.php';
 		$sdb = new AmazonSDB();
 		$response = $sdb->get_attributes('addresses',$hash);
@@ -18,13 +20,11 @@ if($pos == 5 || $pos == 6){
 			//header('Location: ' . $address);
 			}
 		else{
-			header("HTTP/1.0 404 Not Found")
+			echo "sub did not do its fairy magic";
+			//header("HTTP/1.0 404 Not Found")
 			}
-		}
-	else{
-		header('Location: ' . $from_apc);
 		}
 	}
 else{
 	// header("HTTP/1.0 404 Not Found");
-	} */
+	}
