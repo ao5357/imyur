@@ -16,8 +16,11 @@ if($pos == 5 || $pos == 6){
 		$success = $response->isOK();
 		if($success){
 			$url = $response->body->GetAttributesResult->Attribute->Value;
-			apc_add($hash,$url,86400);
-			header("Location: $url");
+			if($url){
+				apc_add($hash,$url,86400);
+				header("Location: $url");
+				}
+			else{header("HTTP/1.0 404 Not Found");}
 			}
 		else{
 			header("HTTP/1.0 404 Not Found");
