@@ -1,11 +1,11 @@
 <?php
 ini_set('display_errors', 1);
 $allowed_schemes = array('http','https','shttp','ssl','spdy');
-$input_url = trim($_GET['q']);
+$input_url = trim($_GET['q']); echo $input_url;
 if(substr($input_url,0,8) == '/api/v1/'){
 	$input_url = substr($input_url,8);
 	}
-$callback = trim($_GET['callback']);
+$callback = ($_GET['callback']) ? trim($_GET['callback']): false;
 $url_parts = parse_url($input_url);
 $output = array('url' => $input_url);
 $success = false;
