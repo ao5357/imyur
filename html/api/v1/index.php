@@ -28,6 +28,7 @@ function save_url($input_url){
 	$sdb = new AmazonSDB();
 	$response = $sdb->put_attributes('addresses', $hash, array('address' => $input_url), true);
 	$success = true;
+	apc_add($hash,$input_url,86400);
 	return $hash;
 	}
 

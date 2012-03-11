@@ -1,3 +1,3 @@
 <?php
-echo 'This is printing to the screen!';
-?>
+$path = trim($_GET['q']);
+echo $path;
