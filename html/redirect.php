@@ -1,12 +1,12 @@
 <?php
 ini_set('display_errors', 1);
-$path = substr(trim($_GET['q']),1); echo $path;
-$pos = strpos($path,'.'); echo $pos;
-/* if($pos == 5 || $pos == 6){
+$path = substr(trim($_GET['q']),1);
+$pos = strpos($path,'.');
+if($pos == 5 || $pos == 6){
 	echo "Condition for pos was true";
 	$hash = substr($path,0,$pos);
-	echo $hash;
-	$from_apc = apc_fetch($hash);
+	echo $hash;}
+	/*$from_apc = apc_fetch($hash);
 	echo $from_apc;
 	if(!$from_apc){
 		require_once 'AWSSDKforPHP/sdk.class.php';
