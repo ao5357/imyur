@@ -16,7 +16,7 @@ if($pos == 5 || $pos == 6){
 		$success = $response->isOK();
 		if($success){
 			$url = $response->body->GetAttributesResult->Attribute->Value;
-			if($url){
+			if($url){ // TODO: Perhaps there's a better way to confirm a result from sub
 				apc_add($hash,$url,86400);
 				header("Location: $url");
 				}

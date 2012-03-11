@@ -38,7 +38,7 @@ function save_url($input_url){
 	}
 
 /* Core conditional logic */
-if($url_parts['scheme'] && in_array($url_parts['scheme'],$allowed_schemes)){
+if(isset($url_parts['scheme']) && in_array($url_parts['scheme'],$allowed_schemes)){
 	$safe_lookup = file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url));
 	if($http_response_header[0] == 'HTTP/1.0 204 No Content'){
 		$save_attempt = save_url($input_url);
