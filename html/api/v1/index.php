@@ -65,14 +65,14 @@ else{
 	}
 
 /* Output */
-if(!$success){
+if($success == false){
 	header("HTTP/1.1 400 Bad Request");
 	}
 
-if($success && $notjson){
+if($success == true && $notjson){
 	echo 'Your shortened link is <a href="http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '">http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '</a>. Please enable Javascript in your browser.';
 	}
-else if(!$success && $notjson){
+else if($success == false && $notjson){
 	echo 'There was an error creating your link. Please enable Javascript in your browser and try again.';
 	}
 else{
