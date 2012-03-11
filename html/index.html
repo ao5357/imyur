@@ -21,17 +21,19 @@
 </header>
 <section>
 	<form action="/api/v1/index.php" class="hide" method="get">
-	<label>Link to shorten: <input autofocus maxlength="1500" name="q" pattern="(http|https|shttp|ssl|spdy).*" placeholder="http://imyur.com" required title="Must be a valid URL" type="url" /></label>
+	<label>Link to shorten: <input autofocus maxlength="1500" name="q" pattern="(http|https|shttp|ssl|spdy).*" placeholder="http://imyur.com" required size="55" title="Must be a valid URL" type="url" /></label> <input type="submit" value="Shorten" />
 	<fieldset><legend>Options</legend>
-	<label>Subdomain: <select name="subdomain"><option selected value="">[none]</option><option value="i">i [for images]</option><option value="self">self [for self-links]</option><option value="www">www</option></select></label>
-	<label>File extension: <input list="extensions" maxlength="" name="ext" title="To let people know what the destination file is" value="" /></label>
+	<label>Subdomain: <select name="subdomain" title="For additional description of the link"><option selected value="">[none]</option><option value="i">i [for images]</option><option value="self">self [for self-links]</option><option value="www">www</option></select></label><br />
+	<label>File extension: .<input list="extensions" maxlength="25" name="ext" pattern="[a-zA-Z0-9]*" size="5" title="To let people know what the destination file is" value="" /></label>
 		<datalist id="extensions">  
-  		<option value="html">  
-  		<option value="jpg">  
-  		<option value="gif">  
-  		<option value="png">  
-  		<option value="mpg">
-  		<option value="wmv">  
+  		<option value="html" />  
+  		<option value="jpg" />  
+  		<option value="gif" />  
+  		<option value="png" />
+  		<option value="mp3" />  
+  		<option value="mpg" />
+  		<option value="wmv" />
+  		<option value="zip" />  
 		</datalist> 
 	</fieldset>
 	</form>
