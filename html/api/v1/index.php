@@ -29,7 +29,7 @@ function save_url($input_url){
 	$response = $sdb->put_attributes('addresses', $hash, array(
     'address' => $input_url)
     );
-  print_r($reponse);
+  print_r($response);
 	}
 
 /* Core conditional logic */
