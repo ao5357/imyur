@@ -2,9 +2,9 @@
 ini_set('display_errors', 1);
 $allowed_schemes = array('http','https','shttp','ssl','spdy');
 $input_url = trim($_GET['q']);
-$notjson = false;
+$notjson = true;
 if(substr($input_url,0,8) == '/api/v1/'){
-	$notjson = true;
+	$notjson = false;
 	$input_url = substr($input_url,8);
 	}
 $callback = (isset($_GET['callback'])) ? trim($_GET['callback']) : false;
