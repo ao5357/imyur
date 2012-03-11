@@ -7,7 +7,7 @@ if(substr($input_url,0,8) == '/api/v1/'){
 	}
 $callback = (isset($_GET['callback'])) ? trim($_GET['callback']) : false;
 $ext = (isset($_GET['ext'])) ? '.' . substr(trim($_GET['ext']),0,25) : false;
-$subdomain = (isset($_GET['subdomain']) && (strlen($_GET['subdomain']) == 0 || in_array($_GET['subdomain'],array('i','self','www')))) ? $_GET['subdomain'] . '.' : false;
+$subdomain = (isset($_GET['subdomain']) && in_array($_GET['subdomain'],array('i','self','www'))) ? $_GET['subdomain'] . '.' : false;
 $url_parts = parse_url($input_url);
 $output = array('url' => $input_url);
 $success = false;
@@ -64,10 +64,10 @@ else{
 
 /* Output */
 if(!$success){header("HTTP/1.1 400 Bad Request");}
-if($success && $ext !== false && $subdomain !== false){
+if($success && $ext && $subdomain){
 	echo 'Your shortened link is <a href="http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '">http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '</a>. Please enable Javascript in your browser.';
 	}
-else if(!$success && $ext !== false && $subdomain !== false){
+else if(!$success && $ext && $subdomain){
 	echo 'There was an error creating your link. Please enable Javascript in your browser and try again.';
 	}
 else{
