@@ -17,7 +17,7 @@ CFCredentials::set(array(
 	'@default' => array(
 		'key' => 'AKIAIQ246I2QNP5GL4TQ',
 		'secret' => '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',
-		'default_cache_config' => 'apc',
+		'default_cache_config' => '',
 		'certificate_authority' => false
 		)
 	)
