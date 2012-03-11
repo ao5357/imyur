@@ -1,11 +1,11 @@
 <?php
 ini_set('display_errors', 1);
-require_once 'AWSSDKforPHP/sdk.class.php';
-$sdb = new AmazonSDB();
 $domain = 'addresses';
 $allowed_schemes = array('http','https','shttp','ssl','spdy');
-$input_url = substr(trim($_GET['q']),8);
+$input_url = trim($_GET['q']);
+print_r($input_url);
 $callback = trim($_GET['callback']);
+$hascallback = strlen($callback);
 $url_parts = parse_url($input_url);
 $output = '';
 
@@ -22,6 +22,8 @@ function counter(){
 	}
 
 function save_url($input_url){
+	require_once 'AWSSDKforPHP/sdk.class.php';
+	$sdb = new AmazonSDB();
 	return base62encode(counter());
 	}
 
