@@ -74,7 +74,8 @@ if($success && $notjson){
 	echo 'Your shortened link is <a href="http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '">http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '</a>. Please enable Javascript in your browser.';
 	}
 else if($success && $notjson){
-	echo 'There was an error creating your link. Please enable Javascript in your browser and try again.';
+	echo 'There was an error creating your link. Please enable Javascript in your browser and try again.<br />';
+	echo '<strong>Error details</strong>: <code>' . $output['error'] . '</code>';
 	}
 else{
 	header("Content-Type: application/json; charset=UTF-8");

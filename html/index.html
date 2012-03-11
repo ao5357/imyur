@@ -5,9 +5,11 @@
 	<meta content="A fast, simple URL shortener" name="description" /><meta content="Brad Czerniak" name="author" />
 	<meta content="A simple, fast URL shortening service." property="og:description" /><meta content="http://imyur.com/apple-touch-icon.png" property="og:image" /><meta content="en_US" property="og:locale" /><meta content="I'm Yur Link Shortener" property="og:title" /><meta content="website" property="og:type" /><meta content="http://imyur.com/" property="og:url" />
 	<style>
-	body{line-height:1.45;}
-	footer{background:#eee;border:1px solid #999;margin:20px 0 0 0;padding:20px;}
+	body{font-size:18px;line-height:1.45;}
+	fieldset label{display:block;margin:0 0 1em;}
+	footer{background:#eee;border:1px solid #999;font-size:14px;margin:20px 0 0 0;padding:0 20px;}
 	h1{font-family:monospace;}
+	input,option{font-size:18px;}
 	.hide{display:none;}
 	.page{border:1px solid #ccc;margin:0 auto;max-width:40em;padding:20px;}
 	</style>
@@ -23,7 +25,7 @@
 	<form action="/api/v1/index.php" class="hide" method="get">
 	<label>Link to shorten: <input autofocus maxlength="1500" name="q" pattern="(http|https|shttp|ssl|spdy).*" placeholder="http://imyur.com" required size="55" title="Must be a valid URL" type="url" /></label> <input type="submit" value="Shorten" />
 	<fieldset><legend>Options</legend>
-	<label>Subdomain: <select name="subdomain" title="For additional description of the link"><option selected value="">[none]</option><option value="i">i [for images]</option><option value="self">self [for self-links]</option><option value="www">www</option></select></label><br />
+	<label>Subdomain: <select name="subdomain" title="For additional description of the link"><option selected value="">[none]</option><option value="i">i [for images]</option><option value="self">self [for self-links]</option><option value="www">www</option></select></label>
 	<label>File extension: .<input list="extensions" maxlength="25" name="ext" pattern="[a-zA-Z0-9]*" size="5" title="To let people know what the destination file is" value="" /></label>
 		<datalist id="extensions">  
   		<option value="html" />  
@@ -39,13 +41,13 @@
 	</form>
 </section>
 <footer>
-	<p><strong>imyur</strong> is a fast barebones link shortener. It doesn't track links in any way. But it does get <a href="http://code.google.com/apis/safebrowsing/safebrowsing_faq.html#whyAdvisory">Advisory provided by Google</a> so known <a href="http://www.google.com/url?q=http://www.antiphishing.org&usg=AFrqEzdc43cbWnGpYdvxqO6R0Xvs3hrtSQ">phishing</a> and <a href="http://www.stopbadware.org/">malware</a> sites can't masquerade as awesome imyur.com URLs.</p>
+	<p><strong>imyur</strong> is a fast barebones link shortener. It doesn't track links in any way, but it does get <a href="http://code.google.com/apis/safebrowsing/safebrowsing_faq.html#whyAdvisory">Advisory provided by Google</a> – so <em>known</em> <a href="http://www.google.com/url?q=http://www.antiphishing.org&usg=AFrqEzdc43cbWnGpYdvxqO6R0Xvs3hrtSQ">phishing</a> and <a href="http://www.stopbadware.org/">malware</a> sites can't masquerade as awesome imyur.com URLs.</p>
 	<ul>
-		<li>I (<a href="https://plus.google.com/101859597007067422923/about">Brad Czerniak</a>) coded this up in my spare time</li>
-		<li>The <a href="http://marrow.org/Giving/Ways_to_Give.aspx">Marrow registry</a> and <a href="http://www.donorschoose.org/donors/search.html?state=MI&max=50">Michigan education</a> are things I care about</li>
+		<li>I (<a href="https://plus.google.com/101859597007067422923/about">Brad</a>) coded this in my spare time</li>
+		<li><a href="http://marrow.org/Giving/Ways_to_Give.aspx">Marrow donation</a> and <a href="http://www.donorschoose.org/donors/search.html?state=MI&max=50">Michigan education</a> are things I care about</li>
 		<li>If you like it, consider <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NUZY3NY4L88U2">contributing to dev and hosting</a> of imyur. No pressure</li>
 	</ul>
-	<p>I really hope you enjoy imyur. If you find a bug or know of a way to it better, please <a href="http://twitter.com/home?status=%40ao5357%20%23imyur">drop me a line</a>. Have a great day!</p>
+	<p>I really hope you enjoy imyur. If you find a bug or know of a way to make it better, please <a href="http://twitter.com/home?status=%40ao5357%20%23imyur">drop me a line</a>. Have a great day!</p>
 </footer>
 </div>
 <script defer async src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
