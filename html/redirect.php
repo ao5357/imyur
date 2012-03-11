@@ -7,7 +7,7 @@ if($pos == 5 || $pos == 6){
 	$from_apc = apc_fetch($hash,$apc_success);
 
 	if($apc_success){
-		header('Location: ' . $from_apc);
+		header("Location: $from_apc");
 		}
 	else{
 		require_once 'AWSSDKforPHP/sdk.class.php';
@@ -17,7 +17,7 @@ if($pos == 5 || $pos == 6){
 		if($success){
 			$url = $response->body->GetAttributesResult->Attribute->Value;
 			apc_add($hash,$url,86400);
-			header('Location: ' . $url);
+			header("Location: $url");
 			}
 		else{
 			header("HTTP/1.0 404 Not Found")
