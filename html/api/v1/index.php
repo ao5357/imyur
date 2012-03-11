@@ -7,7 +7,7 @@ if(substr($input_url,0,8) == '/api/v1/'){
 	}
 $callback = trim($_GET['callback']);
 $url_parts = parse_url($input_url);
-$output = '';
+$output = array('url' => $input_url);
 $success = false;
 
 /* Functions */
@@ -42,17 +42,22 @@ if($url_parts['scheme'] && in_array($url_parts['scheme'],$allowed_schemes)){
 	$safe_lookup = file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url));
 	if($http_response_header[0] == 'HTTP/1.0 204 No Content'){
 		$save_attempt = save_url($input_url);
-		$output = ($save_attempt[0]) ? array('hash' => $save_attempt[1]) : array('error' => 'failed to save to db');
+		if($save_attempt[0]){
+			$output['hash'] = $save_attempt[1]
+			}
+		else{
+			$output['error'] = 'failed to save to db';
+			}
 		}
 	else if(substr($http_response_header[0],0,12) == 'HTTP/1.0 200'){
-		$output = array('error' => $safe_lookup);
+		$output['error'] = $safe_lookup;
 		}
 	else{
-		$output = array('error' => $http_response_header[0]);
+		$output['error'] = $http_response_header[0];
 		}
 	}
 else{
-	$output = array('error' => 'failed basic URL validation');
+	$output['error'] = 'failed basic URL validation';
 	}
 
 /* Output */
