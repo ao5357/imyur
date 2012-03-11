@@ -27,16 +27,22 @@ function save_url($input_url){
 	require_once 'AWSSDKforPHP/sdk.class.php';
 	$sdb = new AmazonSDB();
 	$response = $sdb->put_attributes('addresses', $hash, array('address' => $input_url), true);
-	$success = true;
-	apc_add($hash,$input_url,86400);
-	return $hash;
+	$success = $response->isOK();
+	if($success){
+		apc_add($hash,$input_url,86400);
+		return array($success,$hash);
+		}
+	else{
+		return array($success);
+		}
 	}
 
 /* Core conditional logic */
 if($url_parts['scheme'] && in_array($url_parts['scheme'],$allowed_schemes)){
 	$safe_lookup = file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url));
 	if($http_response_header[0] == 'HTTP/1.0 204 No Content'){
-		$output = array('hash' => save_url($input_url));
+		$save_attempt = save_url($input_url);
+		$output = ($save_attempt[0]) ? array('hash' => $save_attempt[1]) : array('error' => 'failed to save to db');
 		}
 	else if(substr($http_response_header[0],0,12) == 'HTTP/1.0 200'){
 		$output = array('error' => $safe_lookup);
