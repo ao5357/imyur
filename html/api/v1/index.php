@@ -31,13 +31,13 @@ function save_url($input_url){
 	require_once 'AWSSDKforPHP/sdk.class.php';
 	$sdb = new AmazonSDB();
 	$response = $sdb->put_attributes('addresses', $hash, array('address' => $input_url), true);
-	$success = $response->isOK();
-	if($success){
+	$awssuccess = $response->isOK();
+	if($awssuccess){
 		apc_add($hash,$input_url,86400);
-		return array($success,$hash);
+		return array($awssuccess,$hash);
 		}
 	else{
-		return array($success);
+		return array($awssuccess);
 		}
 	}
 
@@ -47,6 +47,7 @@ if(isset($url_parts['scheme']) && in_array($url_parts['scheme'],$allowed_schemes
 	if($http_response_header[0] == 'HTTP/1.0 204 No Content'){
 		$save_attempt = save_url($input_url);
 		if($save_attempt[0]){
+			$success = true;
 			$output['hash'] = $save_attempt[1];
 			}
 		else{
@@ -65,14 +66,14 @@ else{
 	}
 
 /* Output */
-if($success == false){
+if(!$success){
 	header("HTTP/1.1 400 Bad Request");
 	}
 
-if($success == true && $notjson){
+if($success && $notjson){
 	echo 'Your shortened link is <a href="http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '">http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '</a>. Please enable Javascript in your browser.';
 	}
-else if($success == false && $notjson){
+else if($success && $notjson){
 	echo 'There was an error creating your link. Please enable Javascript in your browser and try again.';
 	}
 else{
