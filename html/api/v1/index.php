@@ -1,9 +1,10 @@
 <?php
 ini_set('display_errors', 1);
-$domain = 'addresses';
 $allowed_schemes = array('http','https','shttp','ssl','spdy');
 $input_url = trim($_GET['q']);
-print_r($input_url);
+if(substr($input_url,0,8) == '/api/v1/'){
+	$input_url = substr($input_url,8);
+	}
 $callback = trim($_GET['callback']);
 $hascallback = strlen($callback);
 $url_parts = parse_url($input_url);
@@ -18,13 +19,17 @@ function counter(){
 	$prev = (int)file_get_contents('/home/www/imco.txt');
 	$cur = $prev + 1;
 	file_put_contents('/home/www/imco.txt', $cur);
-	return $cur + 14776335;
+	return base62encode($cur + 16000000);
 	}
 
 function save_url($input_url){
+	$hash = counter();
 	require_once 'AWSSDKforPHP/sdk.class.php';
 	$sdb = new AmazonSDB();
-	return base62encode(counter());
+	$response = $sdb->put_attributes('addresses', $hash, array(
+    'address' => $input_url)
+    );
+  print_r($reponse);
 	}
 
 /* Core conditional logic */
