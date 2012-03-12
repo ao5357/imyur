@@ -1,3 +1,6 @@
 jQuery(document).ready(function($){
-	console.log("This jquery-dependent script ran.");
+	if(window.localStorage){
+		localstorage.setItem("test","stuff");
+		console.log(window.localStorage);
+		}
 });
