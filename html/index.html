@@ -2,55 +2,38 @@
 <html manifest="imyur.appcache" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml"><head>
 	<meta charset="utf-8" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
 	<title>imyur.com | Short Links</title>
-	<meta content="A fast, simple URL shortener" name="description" /><meta content="Brad Czerniak" name="author" />
+	<meta content="A simple, fast URL shortening service." name="description" /><meta content="Brad Czerniak" name="author" />
 	<meta content="A simple, fast URL shortening service." property="og:description" /><meta content="http://imyur.com/apple-touch-icon.png" property="og:image" /><meta content="en_US" property="og:locale" /><meta content="I'm Yur Link Shortener" property="og:title" /><meta content="website" property="og:type" /><meta content="http://imyur.com/" property="og:url" />
 	<style>
-	body{font-size:18px;line-height:1.45;}
+	body{background-color:#9494FF;font-family:sans-serif;font-size:18px;line-height:1.45;}
 	fieldset label{display:block;margin:0 0 1em;}
 	footer{background:#eee;border:1px solid #999;font-size:14px;margin:20px 0 0 0;padding:0 20px;}
-	h1{font-family:monospace;}
+	h1{color:rgba(148,148,255,.5);font-family:monospace;font-size:2.5em;text-shadow:-.1em -.1em rgba(255,139,96,.5);}
 	input,option,select{font-size:18px;}
+	table{width:100%;}
+	 thead{background:#eee;}
 	.hide{display:none;}
-	.page{border:1px solid #ccc;margin:0 auto;max-width:40em;padding:20px;}
+	.page{background:#fff;border:1px solid #303096;border-radius:3px;box-shadow:0 0 10px 5px #303096;margin:0 auto;max-width:40em;padding:20px;}
 	</style>
-	<script>
-		var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-27776562-1']);_gaq.push(['_trackPageview']);
-		(function(){var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
-	</script>
 </head><body><div class="page">
 <header>
 	<h1>I'm Yur Link Shortener</h1>
 </header>
 <section>
-	<form action="/api/v1/index.php" class="hide" method="get">
-	<label>Link to shorten: <input autofocus maxlength="1500" name="q" pattern="(http|https|shttp|ssl|spdy).*" placeholder="http://imyur.com" required size="40" title="Must be a valid URL" type="url" /></label> <input type="submit" value="Shorten" />
+	<form action="/api/v1/shorten.html" class="hide" method="post">
+	<label>Link to shorten: <input autofocus maxlength="1500" name="url" pattern="(http|https|shttp|ssl|spdy).*" placeholder="http://example.com" required size="40" title="Must be a valid URL" type="url" /></label> <input type="submit" value="Shorten" />
 	<fieldset><legend>Options</legend>
 	<label>Subdomain: <select name="subdomain" title="For additional description of the link"><option selected value="">[none]</option><option value="i">i [for images]</option><option value="self">self [for self-links]</option><option value="www">www</option></select></label>
-	<label>File extension: .<input list="extensions" maxlength="25" name="ext" pattern="[a-zA-Z0-9]*" size="5" title="Letters and numbers only" value="" /></label>
-		<datalist id="extensions">  
-  		<option value="html" />  
-  		<option value="jpg" />  
-  		<option value="gif" />  
-  		<option value="png" />
-  		<option value="mp3" />  
-  		<option value="mpg" />
-  		<option value="wmv" />
-  		<option value="zip" />  
-		</datalist> 
+	<label>File extension: .<input list="extensions" maxlength="25" name="extension" pattern="[a-zA-Z0-9]*" size="5" title="Letters and numbers only" value="" /></label>
+		<datalist id="extensions"><option value="html" /><option value="jpg" /><option value="gif" /><option value="png" /><option value="mp3" /><option value="mpg" /><option value="wmv" /><option value="zip" /></datalist> 
 	</fieldset>
 	</form>
-	<table>
+	<table class="hide"><caption>Yur Links</caption>
 	<thead><tr><th>imyur link</th><th>Original</th></tr></thead>
 	</table>
 </section>
 <footer>
-	<p><strong>imyur</strong> is a fast barebones link shortener. It doesn't track links in any way, but it does get <a href="http://code.google.com/apis/safebrowsing/safebrowsing_faq.html#whyAdvisory">Advisory provided by Google</a> – so <em>known</em> <a href="http://www.antiphishing.org">phishing</a> and <a href="http://www.stopbadware.org/">malware</a> sites can't masquerade as awesome imyur.com URLs.</p>
-	<ul>
-		<li>I (<a href="https://plus.google.com/101859597007067422923/about">Brad</a>) coded this in my spare time</li>
-		<li><a href="http://marrow.org/Giving/Ways_to_Give.aspx">Marrow donation</a> and <a href="http://www.donorschoose.org/donors/search.html?state=MI&max=50">Michigan education</a> are things I care about</li>
-		<li>If you like it, consider <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NUZY3NY4L88U2">contributing to dev and hosting</a> of imyur. No pressure</li>
-	</ul>
-	<p>I really hope you enjoy imyur. If you find a bug or know of a way to make it better, please <a href="http://twitter.com/home?status=%40ao5357%20%23imyur">drop me a line</a>. Have a great day!</p>
+	<p><strong>imyur</strong> is a fast barebones link shortener. It doesn't track links in any way, but it does get <a href="http://code.google.com/apis/safebrowsing/safebrowsing_faq.html#whyAdvisory">Advisory provided by Google</a> – so <em>known</em> <a href="http://www.antiphishing.org">phishing</a> and <a href="http://www.stopbadware.org/">malware</a> sites can't masquerade as awesome imyur.com URLs. <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NUZY3NY4L88U2">Donate to dev and hosting</a> or <a href="http://marrow.org/Giving/Ways_to_Give.aspx">Marrow donation</a> or <a href="http://www.donorschoose.org/donors/search.html?state=MI&max=50">Michigan education</a>. Have a great day!</p>
 </footer>
 </div>
 <script defer src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

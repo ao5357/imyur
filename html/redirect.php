@@ -6,7 +6,8 @@ if($pos == 5 || $pos == 6){
 	$hash = substr($path,0,$pos);
 	$from_apc = apc_fetch($hash,$apc_success);
 
-	if($apc_success){
+	if($apc_success && $from_apc){
+		header('Server: ');
 		header("Location: $from_apc");
 		}
 	else{

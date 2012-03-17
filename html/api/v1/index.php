@@ -1,17 +1,18 @@
 <?php
 ini_set('display_errors', 1);
-$allowed_schemes = array('http','https','shttp','ssl','spdy');
-$input_url = trim($_GET['q']);
-$notjson = true;
-if(substr($input_url,0,8) == '/api/v1/'){
-	$notjson = false;
-	$input_url = substr($input_url,8);
-	}
-$callback = (isset($_GET['callback'])) ? trim($_GET['callback']) : false;
-$ext = (isset($_GET['ext'])) ? '.' . substr(trim($_GET['ext']),0,25) : '';
-$subdomain = (isset($_GET['subdomain']) && in_array($_GET['subdomain'],array('i','self','www'))) ? $_GET['subdomain'] . '.' : '';
+/* Allowed Inputs */
+$ext = (isset($_POST['extension'])) ? '.' . substr(preg_replace('/[^a-zA-Z0-9]/','',$_POST['extension']),0,25) : '';
+$subdomain = (isset($_POST['subdomain']) && in_array($_POST['subdomain'],array('i','self','www'))) ? $_POST['subdomain'] . '.' : '';
+$input_url = (isset($_POST['url'])) ? trim($_POST['url']) : '';
+$rest_file = trim($_GET['q']);
+
+print_r($rest_file);
+
 $url_parts = parse_url($input_url);
-$output = array('url' => $input_url);
+$scheme_good = (isset($url_parts['scheme']) && in_array($url_parts['scheme'],array('http','https','shttp','ssl','spdy')));
+$not_imyur = (isset($url_parts['host']) && substr($url_parts['host'],0,9) !== 'imyur.com');
+
+$output = array();
 $success = false;
 
 /* Functions */
@@ -42,9 +43,9 @@ function save_url($input_url){
 	}
 
 /* Core conditional logic */
-if(isset($url_parts['scheme']) && in_array($url_parts['scheme'],$allowed_schemes)){
+if($scheme_good && $not_imyur)){
 	$safe_lookup = file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url));
-	if($http_response_header[0] == 'HTTP/1.0 204 No Content'){
+	if($http_response_header[0] == 'HTTP/1.0 204 No Content' || substr($http_response_header[0],0,12) == 'HTTP/1.0 503'){
 		$save_attempt = save_url($input_url);
 		if($save_attempt[0]){
 			$success = true;
@@ -71,13 +72,13 @@ if(!$success){
 	}
 
 if($success && $notjson){
-	echo 'Your shortened link is <a href="http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '">http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '</a>. Please enable Javascript in your browser.';
+	echo 'Your shortened link is <a href="http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '">http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '</a>';
 	}
-else if($success && $notjson){
+else if(!$success && $notjson){
 	echo 'There was an error creating your link. Please enable Javascript in your browser and try again.<br />';
 	echo '<strong>Error details</strong>: <code>' . $output['error'] . '</code>';
 	}
 else{
 	header("Content-Type: application/json; charset=UTF-8");
-	echo ($callback) ? $callback . '(' . json_encode($output) . ');' : json_encode($output);
+	echo json_encode($output);
 	}
