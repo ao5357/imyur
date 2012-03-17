@@ -20,7 +20,7 @@
 	<h1>I'm Yur Link Shortener</h1>
 </header>
 <section>
-	<form action="/api/v1/shorten.html" class="hide" method="post">
+	<form action="/api/v1/shorten.html" class="hide" id="shorten" method="post">
 	<label>Link to shorten: <input autofocus maxlength="1500" name="url" pattern="(http|https|shttp|ssl|spdy):\/\/.*" placeholder="http://example.com" required size="40" title="Must be a valid URL" type="url" /></label> <input type="submit" value="Shorten" />
 	<fieldset><legend>Options</legend>
 	<label>Subdomain: <select name="subdomain" title="For additional description of the link"><option selected value="">[none]</option><option value="i">i [for images]</option><option value="self">self [for self-links]</option><option value="www">www</option></select></label>
@@ -28,7 +28,7 @@
 		<datalist id="extensions"><option value="html" /><option value="jpg" /><option value="gif" /><option value="png" /><option value="mp3" /><option value="mpg" /><option value="wmv" /><option value="zip" /></datalist> 
 	</fieldset>
 	</form>
-	<table class="hide"><caption>Yur Links</caption>
+	<table id="imyurls" class="hide"><caption>Yur Links</caption>
 	<thead><tr><th>imyur link</th><th>Original</th></tr></thead>
 	</table>
 </section>
