@@ -46,4 +46,4 @@ function save_url($input_url){
 	}
 
 echo $ext . ' ' . $subdomain . ' ' . $input_url . ' ' . $rest_file . ' ' . (string)$scheme_good . ' ' . (string)$not_imyur . ' ' . counter();
-print_r(file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url))));
+print_r(file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url)));
