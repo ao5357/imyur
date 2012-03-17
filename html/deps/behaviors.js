@@ -23,12 +23,11 @@ jQuery(document).ready(function($){
 		$.post("/api/v1/shorten.json",$.param(params))
 			.done(function(data){
 				$imyurls.removeClass("hide").prepend('<tr><td>test</td><td>test</td></tr>');
-				console.log(data);
+				console.log(data,params);
 				// if(window.localStorage){}
 				})
-			.fail(function(data){
-				if(data.error){alert('There was an error. Code: "' + data.error + '". Please try again.');}
-				else{alert('There was an unspecified error. Please try again.');}	
+			.fail(function(){
+				alert('There was an error. Please try again.');
 				})
 			.always(function(){
 				submit.removeAttr("disabled");
