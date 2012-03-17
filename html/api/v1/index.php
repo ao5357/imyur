@@ -45,6 +45,35 @@ function save_url($input_url){
 		}
 	}
 
-echo $ext . ' ' . $subdomain . ' ' . $input_url . ' ' . $rest_file . ' ' . (string)$scheme_good . ' ' . (string)$not_imyur . ' ' . counter();
-$goog = file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url));
-print_r($http_response_header);
+/* Core conditional logic */
+if($scheme_good && $not_imyur)){
+	$safe_lookup = file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url));
+	if($http_response_header[0] == 'HTTP/1.0 204 No Content' || substr($http_response_header[0],0,12) == 'HTTP/1.0 503'){
+		$save_attempt = save_url($input_url);
+		if($save_attempt[0]){
+			$success = true;
+			$output['hash'] = $save_attempt[1];
+			}
+		else{
+			$output['error'] = 'failed to save to db';
+			}
+		}
+	else if(substr($http_response_header[0],0,12) == 'HTTP/1.0 200'){
+		$output['error'] = $safe_lookup;
+		}
+	else{
+		$output['error'] = $http_response_header[0];
+		}
+	}
+else{
+	$output['error'] = 'failed basic URL validation';
+	}
+
+/* Output */
+if($success && $rest_file == 'html'){
+	echo 'Your shortened link is <a href="http://' . $subdomain . 'imyur.com/' . $output['hash'] . $ext . '">http://' . $subdomain . 'imyur.com/' . $output['hash'] . $ext . '</a>';
+	}
+else{
+	//header("HTTP/1.0 404 Not Found");
+	echo 'Not found';
+	}
