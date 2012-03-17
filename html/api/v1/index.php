@@ -46,3 +46,4 @@ function save_url($input_url){
 	}
 
 echo $ext . ' ' . $subdomain . ' ' . $input_url . ' ' . $rest_file . ' ' . (string)$scheme_good . ' ' . (string)$not_imyur;
+echo counter();
