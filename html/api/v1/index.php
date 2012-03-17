@@ -75,18 +75,19 @@ if($success && $rest_file == 'html'){
 	echo 'Your shortened link is <a href="http://' . $subdomain . 'imyur.com/' . $output['hash'] . $ext . '">http://' . $subdomain . "imyur.com/" . $output['hash'] . $ext . '</a>';
 	}
 else if($success && $rest_file == 'json'){
-	header("Content-Type: application/json; charset=UTF-8");
+	// header("Content-Type: application/json; charset=UTF-8");
 	echo json_encode($output);
 	}
 else if(!$success && isset($output['error']) && $rest_file == 'html'){
-	header("HTTP/1.0 400 Bad Request");
+	// header("HTTP/1.0 400 Bad Request");
 	echo 'There was a problem with your request.<br /><strong>Error output</strong>: ' . $output['error'];
 	}
 else if(!$success && isset($output['error']) && $rest_file == 'json'){
-	header("HTTP/1.0 400 Bad Request");
-	header("Content-Type: application/json; charset=UTF-8");
+	//header("HTTP/1.0 400 Bad Request");
+	//header("Content-Type: application/json; charset=UTF-8");
 	echo json_encode($output);
 	}
 else{
-	header("HTTP/1.0 404 Not Found");
+	//header("HTTP/1.0 404 Not Found");
+	echo 'Not found';
 	}
