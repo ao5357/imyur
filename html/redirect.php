@@ -16,11 +16,11 @@ if($pos == 5 || $pos == 6){
 		$response = $sdb->get_attributes('addresses',$hash,'address');
 		$success = $response->isOK();
 		if($success){
-			$url = $response->body->GetAttributesResult->Attribute->Value;
-			print_r($response);
+			$url = (string)$response->body->GetAttributesResult->Attribute->Value;
+			//print_r($response);
 			if($url && $url !== null){ // TODO: Perhaps there's a better way to confirm a result from sub
-				//apc_add($hash,$url,86400);
-				//header("Location: $url");
+				apc_add($hash,$url,86400);
+				header("Location: $url");
 				}
 			else{header("HTTP/1.0 404 Not Found");}
 			}
