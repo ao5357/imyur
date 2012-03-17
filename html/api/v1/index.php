@@ -46,7 +46,7 @@ function save_url($input_url){
 	}
 
 /* Core conditional logic */
-if($scheme_good && $not_imyur)){
+if($scheme_good && $not_imyur){
 	$safe_lookup = file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url));
 	if($http_response_header[0] == 'HTTP/1.0 204 No Content' || substr($http_response_header[0],0,12) == 'HTTP/1.0 503'){
 		$save_attempt = save_url($input_url);
@@ -73,7 +73,20 @@ else{
 if($success && $rest_file == 'html'){
 	echo 'Your shortened link is <a href="http://' . $subdomain . 'imyur.com/' . $output['hash'] . $ext . '">http://' . $subdomain . 'imyur.com/' . $output['hash'] . $ext . '</a>';
 	}
+else if($success && $rest_file == 'json'){
+	header("Content-Type: application/json; charset=UTF-8");
+	echo json_encode($output);
+	}
+else if(!$success && isset($output['error']) && $rest_file == 'html'){
+	header("HTTP/1.0 400 Bad Request");
+	echo 'There was a problem with your request.<br /><strong>Error output</strong>: ' . $output['error'];
+	}
+else if(!$success && isset($output['error']) && $rest_file == 'json'){
+	header("HTTP/1.0 400 Bad Request");
+	header("Content-Type: application/json; charset=UTF-8");
+	echo json_encode($output);
+	}
 else{
-	//header("HTTP/1.0 404 Not Found");
+	header("HTTP/1.0 404 Not Found");
 	echo 'Not found';
 	}
