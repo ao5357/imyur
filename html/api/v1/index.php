@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', 1);
 /* Allowed Inputs */
 $ext = (isset($_POST['extension'])) ? '.' . substr(preg_replace('/[^a-zA-Z0-9]/','',$_POST['extension']),0,25) : '';
