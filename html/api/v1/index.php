@@ -6,7 +6,7 @@ $subdomain = (isset($_POST['subdomain']) && in_array($_POST['subdomain'],array('
 $input_url = (isset($_POST['url'])) ? trim($_POST['url']) : '';
 $rest_file = trim($_GET['q']);
 
-print_r($rest_file);
+echo $rest_file;
 
 $url_parts = parse_url($input_url);
 $scheme_good = (isset($url_parts['scheme']) && in_array($url_parts['scheme'],array('http','https','shttp','ssl','spdy')));
@@ -42,7 +42,7 @@ function save_url($input_url){
 		}
 	}
 
-/* Core conditional logic */
+/* Core conditional logic
 if($scheme_good && $not_imyur)){
 	$safe_lookup = file_get_contents('https://sb-ssl.google.com/safebrowsing/api/lookup?client=imyur&appver=1.0&apikey=ABQIAAAA8mLG1wxBrySac59O6cUIzhT3haXetYFvqARH2WifqKz48noHcg&pver=3.0&url=' . urlencode($input_url));
 	if($http_response_header[0] == 'HTTP/1.0 204 No Content' || substr($http_response_header[0],0,12) == 'HTTP/1.0 503'){
@@ -64,9 +64,9 @@ if($scheme_good && $not_imyur)){
 	}
 else{
 	$output['error'] = 'failed basic URL validation';
-	}
+	} */
 
-/* Output */
+/* Output 
 if(!$success){
 	header("HTTP/1.1 400 Bad Request");
 	}
@@ -81,4 +81,4 @@ else if(!$success && $notjson){
 else{
 	header("Content-Type: application/json; charset=UTF-8");
 	echo json_encode($output);
-	}
+	} */
