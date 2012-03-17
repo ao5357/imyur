@@ -6,8 +6,8 @@ $subdomain = (isset($_POST['subdomain']) && in_array($_POST['subdomain'],array('
 $input_url = (isset($_POST['url'])) ? trim($_POST['url']) : '';
 $rest_file = trim($_GET['q']);
 
-if($rest_file == '/api/v1/shorten.html'){$rest_file = 'html'}
-else if($rest_file == '/api/v1/shorten.json'){$rest_file = 'json'}
+if($rest_file == '/api/v1/shorten.html'){$rest_file = 'html';}
+else if($rest_file == '/api/v1/shorten.json'){$rest_file = 'json';}
 else{$rest_file = false;}
 
 $url_parts = parse_url($input_url);
