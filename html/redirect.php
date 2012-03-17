@@ -10,7 +10,7 @@ if($pos == 5 || $pos == 6){
 		header('Server: ');
 		header("Location: $from_apc");
 		}
-	else{
+	else if(preg_match("/^[a-zA-Z0-9]+$/",$hash)){
 		require_once 'AWSSDKforPHP/sdk.class.php';
 		$sdb = new AmazonSDB();
 		$response = $sdb->get_attributes('addresses',$hash,'address');
@@ -28,6 +28,7 @@ if($pos == 5 || $pos == 6){
 			header("HTTP/1.0 404 Not Found");
 			}
 		}
+	else{header("HTTP/1.0 404 Not Found");}
 	}
 else{
 	header("HTTP/1.0 404 Not Found");

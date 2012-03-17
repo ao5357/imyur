@@ -1,10 +1,10 @@
 <?php
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL | E_STRICT);
+// ini_set('display_errors', 1);
 /* Allowed Inputs */
 $ext = (isset($_POST['extension'])) ? '.' . substr(preg_replace('/[^a-zA-Z0-9]/','',$_POST['extension']),0,25) : '';
 $subdomain = (isset($_POST['subdomain']) && in_array($_POST['subdomain'],array('i','self','www'))) ? $_POST['subdomain'] . '.' : '';
-$input_url = (isset($_POST['url'])) ? trim($_POST['url']) : '';
+$input_url = (isset($_POST['url'])) ? clean_url(trim($_POST['url'])) : '';
 $rest_file = trim($_GET['q']);
 
 if($rest_file == '/api/v1/shorten.html'){$rest_file = 'html';}
@@ -19,6 +19,29 @@ $output = array();
 $success = false;
 
 /* Functions */
+function clean_url($url){
+	$url = preg_replace('|[^a-z0-9-~+_.?\[\]\^#=!&;,/:%@$\|*\'"()\\x80-\\xff]|i','',$url);
+	$strip = array('%0d','%0a','%0D','%0A');
+	$url = deep_replace($strip,$url);
+	$url = str_replace(';//','://',$url);
+	$url = str_replace('&amp;','&',$url);
+	return $url;
+	}
+
+function deep_replace($search,$subject){
+	$found = true;
+	while($found){
+		$found = false;
+		foreach((array)$search as $val){
+			while(strpos($subject,$val) !== false){
+				$found = true;
+				$subject = str_replace($val,'',$subject);
+				}
+			}
+		}
+	return $subject;
+	}
+
 function base62encode($data){
 	return gmp_strval(gmp_init($data,10),62);
 	}
@@ -88,5 +111,4 @@ else if(!$success && isset($output['error']) && $rest_file == 'json'){
 	}
 else{
 	header("HTTP/1.0 404 Not Found");
-	echo 'Not found';
 	}
