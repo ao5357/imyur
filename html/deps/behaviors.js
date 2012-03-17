@@ -9,7 +9,8 @@ jQuery(document).ready(function($){
 	var $shorten = $("#shorten");
 	$shorten.on("submit",function(e){
 		var submit = $shorten.find('[type="submit"]').attr("disabled","disabled");
-		var params = $shorten.serializeArray().each(function(i,field){
+		var params = $shorten.serializeArray();
+		$.each(params,function(i,field){
 			switch(field.name){
 				case "url":
 					field.value = $.trim(field.value.replace(/[^a-z0-9-~+_.?\[\]\^#=!&;,\/:%@$\|*\'"()\\x80-\\xff]/i,''));
