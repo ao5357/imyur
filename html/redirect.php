@@ -1,5 +1,5 @@
 <?php
-// ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 $path = substr(trim($_GET['q']),1);
 $pos = strpos($path,'.');
 if($pos == 5 || $pos == 6){
@@ -17,7 +17,7 @@ if($pos == 5 || $pos == 6){
 		$success = $response->isOK();
 		if($success){
 			$url = $response->body->GetAttributesResult->Attribute->Value;
-			if($url){ // TODO: Perhaps there's a better way to confirm a result from sub
+			if($url && $url !== null){ // TODO: Perhaps there's a better way to confirm a result from sub
 				apc_add($hash,$url,86400);
 				header("Location: $url");
 				}
