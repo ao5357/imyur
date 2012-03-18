@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
 	var $imyurls = $("#imyurls");
 	if(window.localStorage){
 		$.each(window.localStorage,function(i,storedObj){
-			$imyurls.removeClass("hide").prepend('<tr><td>' + storedObj + '</td><td>' + localStorage.key(i) + '</td></tr>');
+			$imyurls.removeClass("hide").prepend('<tr><td>' + storedObj + '</td><td>' + localStorage.getItem(storedObj) + '</td></tr>');
 			});
 		}
 	
