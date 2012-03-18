@@ -1,8 +1,8 @@
 jQuery(document).ready(function($){
-	var $imyurls = $("#imyurls tbody");
+	var $imyurls = $("#imyurls");
 	if(window.localStorage){
 		$.each(window.localStorage,function(i,storedObj){
-			$imyurls.removeClass("hide").append('<tr><td>' + storedObj + '</td><td>' + localStorage.getItem(storedObj) + '</td></tr>');
+			$imyurls.removeClass("hide").find("tbody").append('<tr><td>' + storedObj + '</td><td>' + localStorage.getItem(storedObj) + '</td></tr>');
 			});
 		}
 	
@@ -27,7 +27,7 @@ jQuery(document).ready(function($){
 		$.post("/api/v1/shorten.json",$.param(params))
 			.done(function(data){
 				var imyurl = 'http://' + saniParams.subdomain + 'imyur.com/' + data.hash + saniParams.extension;
-				$imyurls.removeClass("hide").prepend('<tr><td>' + imyurl + '</td><td>' + saniParams.url + '</td></tr>').fadeIn();
+				$imyurls.removeClass("hide").find("tbody").prepend('<tr><td>' + imyurl + '</td><td>' + saniParams.url + '</td></tr>').fadeIn();
 				if(window.localStorage){
 					localStorage.setItem(imyurl,saniParams.url);
 					}
