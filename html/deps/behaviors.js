@@ -1,8 +1,8 @@
 jQuery(document).ready(function($){
 	var $imyurls = $("#imyurls");
 	if(window.localStorage){
-		$.each(window.localStorage,function(imyurl,original){
-			$imyurls.removeClass("hide").prepend('<tr><td>' + imyurl + '</td><td>' + original + '</td></tr>');
+		$.each(window.localStorage,function(i,storedObj){
+			$imyurls.removeClass("hide").prepend('<tr><td>' + storedObj + '</td><td>' + storedObj.key(i) + '</td></tr>');
 			});
 		}
 	
