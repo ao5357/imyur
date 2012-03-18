@@ -1,8 +1,8 @@
 jQuery(document).ready(function($){
-	var $imyurls = $("#imyurls");
+	var $imyurls = $("#imyurls tbody");
 	if(window.localStorage){
 		$.each(window.localStorage,function(i,storedObj){
-			$imyurls.removeClass("hide").prepend('<tr><td>' + storedObj + '</td><td>' + localStorage.getItem(storedObj) + '</td></tr>');
+			$imyurls.removeClass("hide").append('<tr><td>' + storedObj + '</td><td>' + localStorage.getItem(storedObj) + '</td></tr>');
 			});
 		}
 	
@@ -27,14 +27,14 @@ jQuery(document).ready(function($){
 		$.post("/api/v1/shorten.json",$.param(params))
 			.done(function(data){
 				var imyurl = 'http://' + saniParams.subdomain + 'imyur.com/' + data.hash + saniParams.extension;
-				$imyurls.removeClass("hide").prepend('<tr><td>' + imyurl + '</td><td>' + saniParams.url + '</td></tr>');
+				$imyurls.removeClass("hide").prepend('<tr><td>' + imyurl + '</td><td>' + saniParams.url + '</td></tr>').fadeIn();
 				if(window.localStorage){
 					localStorage.setItem(imyurl,saniParams.url);
 					}
 				$shorten[0].reset();
 				})
 			.fail(function(){
-				alert('There was an error. Please try again.');
+				alert('There was an error. Probably something wrong with the URL (did you forget the http:// part?). Please try again.');
 				})
 			.always(function(){
 				submit.removeAttr("disabled");

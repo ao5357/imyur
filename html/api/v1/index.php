@@ -13,7 +13,7 @@ else{$rest_file = false;}
 
 $url_parts = parse_url($input_url);
 $scheme_good = (isset($url_parts['scheme']) && in_array($url_parts['scheme'],array('http','https','shttp','ssl','spdy')));
-$not_imyur = (isset($url_parts['host']) && substr($url_parts['host'],0,9) !== 'imyur.com');
+$not_imyur = (isset($url_parts['host']) && strrpos($url_parts['host'],'imyur.com') === false);
 
 $output = array();
 $success = false;
@@ -60,7 +60,7 @@ function save_url($input_url){
 	$response = $sdb->put_attributes('addresses', $hash, array('address' => $input_url), true);
 	$awssuccess = $response->isOK();
 	if($awssuccess){
-		apc_add($hash,$input_url,86400);
+		apc_add($hash,$input_url,0);
 		return array($awssuccess,$hash);
 		}
 	else{
