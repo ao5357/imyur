@@ -2,8 +2,8 @@
 // ini_set('display_errors', 1);
 $path = substr(trim($_GET['q']),1);
 $pos = strpos($path,'.');
-if($pos == 5 || $pos == 6){
-	$hash = substr($path,0,$pos);
+if(!$pos || $pos == 5 || $pos == 6){
+	$hash = ($pos) ? substr($path,0,$pos) : substr($path,0,6);
 	$from_apc = apc_fetch($hash,$apc_success);
 
 	if($apc_success && $from_apc){
