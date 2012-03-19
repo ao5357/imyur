@@ -12,7 +12,7 @@
 	input,option,select{font-size:18px;}
 	table{margin:20px 0 0 0;width:100%;}
 	 thead{background:#eee;}
-	 	td,th{border-bottom:1px solid #999;padding:10px 20px;text-align:left;}
+	 	td{border-bottom:1px solid #999;padding:10px 20px;text-align:left;}
 	 	th:first-child{width:15em;}
 	.hide{display:none;}
 	.page{background:#fff;border:1px solid #303096;border-radius:3px;box-shadow:0 0 10px 5px #303096;margin:0 auto;max-width:40em;padding:20px;}
@@ -23,7 +23,7 @@
 </header>
 <section>
 	<form action="/api/v1/shorten.html" id="shorten" method="post">
-	<label>Link to shorten: <input autofocus maxlength="1500" name="url" pattern="(http|https|shttp|ssl|spdy):\/\/.*" placeholder="http://example.com" required size="40" title="Must be a valid URL" type="url" /></label> <input type="submit" value="Shorten" />
+	<label>Link to shorten: <input autofocus maxlength="1500" name="url" pattern="(http|https|shttp|ssl|spdy):\/\/.*" placeholder="http://example.com" required size="20" title="Must be a valid URL" type="url" /></label> <input type="submit" value="Shorten" />
 	<fieldset><legend>Options</legend>
 	<label>Subdomain: <select name="subdomain" title="For additional description of the link"><option selected value="">[none]</option><option value="i">i [for images]</option><option value="self">self [for self-links]</option><option value="www">www</option></select></label>
 	<label title="A file extension lets the person clicking know what type of end result to expect.">File extension: .<input list="extensions" maxlength="25" name="extension" pattern="[a-zA-Z0-9]*" size="5" title="Letters and numbers only" value="" /></label>
