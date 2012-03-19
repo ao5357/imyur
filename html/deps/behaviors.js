@@ -27,7 +27,7 @@ jQuery(document).ready(function($){
 		$.post("/api/v1/shorten.json",$.param(params))
 			.done(function(data){
 				var imyurl = 'http://' + saniParams.subdomain + 'imyur.com/' + data.hash + saniParams.extension;
-				$imyurls.removeClass("hide").find("tbody").prepend('<tr><td>' + imyurl + '</td><td>' + saniParams.url + '</td></tr>').fadeIn();
+				$imyurls.removeClass("hide").find("tbody").prepend('<tr><td>' + imyurl + '</td><td>' + saniParams.url + '</td></tr>');
 				if(window.localStorage){
 					localStorage.setItem(imyurl,saniParams.url);
 					}
