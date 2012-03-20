@@ -19,9 +19,10 @@
 	.page{background:#fff;border:1px solid #303096;border-radius:3px;box-shadow:0 0 10px 5px #303096;margin:0 auto;max-width:40em;padding:20px;}
 	.required:before{color:#ff8b60;content:'*';}
 	@media screen and (max-width:40em){
-		table{display:block;width:inherit !important;}
+		caption,table,tbody,td,th,thead,tr{display:block;width:auto;}
 			td{float:left;clear:left;}
-			th:first-child{width:inherit !important;}
+				td:first-child{border-bottom:1px dotted #ccc;}
+			th:first-child{width:auto}
 			tr{display:block;float:left;clear:both;padding:5px 0;width:100%;}
 			tbody tr:nth-child(even){background:#eee;}
 		}
