@@ -42,15 +42,11 @@ function deep_replace($search,$subject){
 	return $subject;
 	}
 
-function base62encode($data){
-	return gmp_strval(gmp_init($data,10),62);
-	}
-
 function counter(){
 	$prev = (int)file_get_contents('/home/www/imco.txt');
 	$cur = $prev + 1;
 	file_put_contents('/home/www/imco.txt', $cur);
-	return base62encode($cur + 16000000);
+	return gmp_strval(gmp_init($cur + 16000000,10),62);
 	}
 
 function save_url($input_url){
