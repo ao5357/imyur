@@ -9,5 +9,5 @@
 	Language: English
 	Doctype: HTML5
 	Standards: HTML5, CSS3
-	Components: Amazon EC2, nginx, php5, php-fpm, php-apc, MySQl, jQuery, Google Fonts API, Hawidu CSS
+	Components: Amazon EC2, Amazon SimpleDB, nginx, php5, php-fpm, php-apc, MySQl, jQuery
 	Software: git, Coda, Firefox Nightly
