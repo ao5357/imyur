@@ -12,13 +12,16 @@
 	input,option,select{font-size:18px;}
 	table{margin:20px 0 0 0;width:100%;}
 	 thead{background:#ddd;}
-	 	td,th{border-bottom:1px solid #999;padding:5px 20px;text-align:left;white-space:pre-wrap;word-wrap:break-word;}
+	 	td,th{padding:5px 20px;text-align:left;white-space:pre-wrap;word-wrap:break-word;}
 	 	th:first-child{width:15em;}
+	 	tr{border-bottom:1px solid #999;}
 	.hide{display:none;}
 	.page{background:#fff;border:1px solid #303096;border-radius:3px;box-shadow:0 0 10px 5px #303096;margin:0 auto;max-width:40em;padding:20px;}
 	.required:before{color:#ff8b60;content:'*';}
 	@media screen and (max-width:40em){
-		table{display:block;}
+		table{display:block;width:inherit !important;}
+			td{float:left;clear:left;}
+			th:first-child{width:inherit !important;}
 			tr{display:block;float:left;clear:both;padding:5px 0;width:100%;}
 			tbody tr:nth-child(even){background:#eee;}
 		}
