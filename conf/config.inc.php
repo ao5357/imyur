@@ -1,4 +1,7 @@
-<?php if (!class_exists('CFRuntime')) die('No direct access allowed.');
+<?php
+
+if (!class_exists('CFRuntime')) die('No direct access allowed.');
+
 /**
  * Stores your AWS account information. Add your account information, and then rename this file
  * to 'config.inc.php'.
@@ -15,10 +18,9 @@
  */
 CFCredentials::set(array(
 	'@default' => array(
-		'key' => 'AKIAIQ246I2QNP5GL4TQ',
-		'secret' => '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',
+		'key' => 'XXXXXXXXXXXXXXXXXXXX',
+		'secret' => 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
 		'default_cache_config' => '',
 		'certificate_authority' => false
-		)
-	)
-);
+  )
+));
